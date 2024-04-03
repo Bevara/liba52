@@ -1,0 +1,14 @@
+{
+    "name": "liba52",
+    "description": "A52 decoder",
+    "filters":["rfac3","a52dec"],
+    "help": "This filter decodes AC3 streams through a52dec library.",
+    "support": [
+        "audio"
+    ],
+    "sources":"https://bevara.ddns.net/sources/liba52.accessor",
+    "filter_source":{
+        "rfac3" : "reframe_ac3.c",
+        "a52dec" : "dec_ac52.c"
+    }
+}
