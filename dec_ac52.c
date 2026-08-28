@@ -25,6 +25,7 @@
 
 #include <gpac/filters.h>
 #include <gpac/constants.h>
+#include "filter_register.h"
 
 #ifdef GPAC_HAS_LIBA52
 
@@ -50,7 +51,7 @@
 typedef struct
 {
 	GF_FilterPid *ipid, *opid;
-	
+
 	a52_state_t *codec;
 	sample_t* samples;
 
@@ -298,4 +299,10 @@ const GF_FilterRegister * EMSCRIPTEN_KEEPALIVE dynCall_a52dec_register(GF_Filter
 #else
 	return NULL;
 #endif
+}
+
+
+__attribute__((constructor))
+void register_a52dec(void) {
+    gf_filter_auto_register("a52dec", dynCall_a52dec_register);
 }

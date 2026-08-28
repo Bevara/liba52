@@ -27,6 +27,8 @@
 #include <gpac/constants.h>
 #include <gpac/filters.h>
 
+#include "filter_register.h"
+
 #if !defined(GPAC_DISABLE_AV_PARSERS) && !defined(GPAC_DISABLE_RFAC3)
 
 typedef struct
@@ -685,3 +687,8 @@ const GF_FilterRegister *dynCall_rfac3_register(GF_FilterSession *session)
 	return NULL;
 }
 #endif // !defined(GPAC_DISABLE_AV_PARSERS) && !defined(GPAC_DISABLE_RFAC3)
+
+__attribute__((constructor))
+void register_rfac3(void) {
+    gf_filter_auto_register("rfac3", dynCall_rfac3_register);
+}
