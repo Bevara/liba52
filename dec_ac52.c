@@ -292,7 +292,7 @@ GF_FilterRegister A52DecRegister = {
 
 #endif
 
-const GF_FilterRegister * EMSCRIPTEN_KEEPALIVE dynCall_a52dec_register(GF_FilterSession *session)
+const GF_FilterRegister * EMSCRIPTEN_KEEPALIVE a52dec_register(GF_FilterSession *session)
 {
 #ifdef GPAC_HAS_LIBA52
 	return &A52DecRegister;
@@ -304,5 +304,5 @@ const GF_FilterRegister * EMSCRIPTEN_KEEPALIVE dynCall_a52dec_register(GF_Filter
 
 __attribute__((constructor))
 void register_a52dec(void) {
-    gf_filter_auto_register("a52dec", dynCall_a52dec_register);
+    gf_filter_auto_register("a52dec", a52dec_register);
 }

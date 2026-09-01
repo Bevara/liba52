@@ -677,12 +677,12 @@ GF_FilterRegister AC3DmxRegister = {
 };
 
 
-const GF_FilterRegister * EMSCRIPTEN_KEEPALIVE dynCall_rfac3_register(GF_FilterSession *session)
+const GF_FilterRegister * EMSCRIPTEN_KEEPALIVE rfac3_register(GF_FilterSession *session)
 {
 	return &AC3DmxRegister;
 }
 #else
-const GF_FilterRegister *dynCall_rfac3_register(GF_FilterSession *session)
+const GF_FilterRegister *rfac3_register(GF_FilterSession *session)
 {
 	return NULL;
 }
@@ -690,5 +690,5 @@ const GF_FilterRegister *dynCall_rfac3_register(GF_FilterSession *session)
 
 __attribute__((constructor))
 void register_rfac3(void) {
-    gf_filter_auto_register("rfac3", dynCall_rfac3_register);
+    gf_filter_auto_register("rfac3", rfac3_register);
 }
