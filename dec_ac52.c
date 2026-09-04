@@ -2,7 +2,7 @@
  *			GPAC - Multimedia Framework C SDK
  *
  *			Authors: Jean Le Feuvre
- *			Copyright (c) Telecom ParisTech 2000-2021
+ *			Copyright (c) Telecom ParisTech 2000-2024
  *					All rights reserved
  *
  *  This file is part of GPAC / AC3 liba52 decoder filter
@@ -25,7 +25,6 @@
 
 #include <gpac/filters.h>
 #include <gpac/constants.h>
-#include "filter_register.h"
 
 #ifdef GPAC_HAS_LIBA52
 
@@ -51,7 +50,7 @@
 typedef struct
 {
 	GF_FilterPid *ipid, *opid;
-
+	
 	a52_state_t *codec;
 	sample_t* samples;
 
@@ -287,7 +286,8 @@ GF_FilterRegister A52DecRegister = {
 	SETCAPS(A52DecCaps),
 	.configure_pid = a52dec_configure_pid,
 	.process = a52dec_process,
-	.finalize = a52dec_finalize
+	.finalize = a52dec_finalize,
+	.hint_class_type = GF_FS_CLASS_DECODER
 };
 
 #endif
@@ -301,7 +301,8 @@ const GF_FilterRegister * EMSCRIPTEN_KEEPALIVE a52dec_register(GF_FilterSession 
 #endif
 }
 
-
+/*Bevara: side modules register their own filters at load time.*/
+#include "filter_register.h"
 __attribute__((constructor))
 void register_a52dec(void) {
     gf_filter_auto_register("a52dec", a52dec_register);
