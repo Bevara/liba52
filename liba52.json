@@ -1,5 +1,6 @@
 {
     "name": "liba52",
+    "version": "1.0.1",
     "description": "A52 decoder",
     "filters":["rfac3","a52dec"],
     "help": "This filter decodes AC3 streams through a52dec library.",
