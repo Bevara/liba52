@@ -2,21 +2,33 @@
     "name": "liba52",
     "version": "1.0.2",
     "description": "A52 decoder",
-    "filters":["rfac3","a52dec"],
+    "filters": [
+        "rfac3",
+        "a52dec"
+    ],
     "help": "This filter decodes AC3 streams through a52dec library.",
     "support": [
         "audio"
     ],
-    "sources":"https://bevara.ddns.net/sources/liba52.accessor",
-    "filter_source":{
-        "rfac3" : "reframe_ac3.c",
-        "a52dec" : "dec_ac52.c"
+    "sources": "https://bevara.ddns.net/sources/liba52.accessor",
+    "filter_source": {
+        "rfac3": "reframe_ac3.c",
+        "a52dec": "dec_ac52.c"
     },
-    "Format": ["AC-3"],
-    "extension":{
-      "ac3" : "audio"
+    "Format": [
+        "AC-3"
+    ],
+    "extension": {
+        "ac3": "audio"
     },
-    "using": ["mm_solver_minimal_1.0.1", "mm_solver_1.0.1", "mm_solver_1.0.2", "mm_solver_1.0.3", "mm_solver_1.0.4"],
+    "using": [
+        "mm_solver_minimal_1.0.1",
+        "mm_solver_1.0.1",
+        "mm_solver_1.0.2",
+        "mm_solver_1.0.3",
+        "mm_solver_1.0.4",
+        "mm_solver_1.0.5"
+    ],
     "patents": {
         "status": "expired",
         "note": "AC-3, 2017",
